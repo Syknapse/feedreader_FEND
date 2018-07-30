@@ -59,7 +59,8 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
-        const body = document.querySelector('body')
+        const body = document.querySelector('body');
+        const menu = document.querySelector('.menu-icon-link');
 
         it('is hidden on load', function() {
             expect(body.classList.contains('menu-hidden')).toBe(true);
@@ -70,6 +71,13 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+         it('toggles visibility on click', function(){
+             menu.click();
+             expect(body).toHaveClass('menu-hidden');
+
+             menu.click();
+             expect(body).not.toHaveClass('menu-hidden');
+         })
 
     });
 

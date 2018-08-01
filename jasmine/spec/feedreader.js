@@ -104,10 +104,29 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    /* New Feed Selection suite */
+    describe('New Feed Selection', function() {
+        let firstFeed, secondFeed
 
-        /* TODO: Write a test that ensures when a new feed is loaded
+        // Run loadFeed twice
+        beforeEach( function(done) {
+            loadFeed(0, function() {
+                firstFeed = document.querySelector('[data-select=feed]').innerHTML;
+                loadFeed(1, function() {
+                    done();
+                });
+            });
+        });
+
+        /* A test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        it('is different from previous selection', function(done) {
+            secondFeed = document.querySelector('[data-select=feed]').innerHTML;
+            expect(firstFeed).not.toBe(secondFeed);
+            done();
+        });
+    });
+
 }());

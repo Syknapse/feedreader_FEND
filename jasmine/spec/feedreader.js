@@ -52,7 +52,7 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "The menu" */
+    /* Menu test suite */
     describe('The menu', function() {
         /* A test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -83,14 +83,26 @@ $(function() {
     });
 
 
-    /* TODO: Write a new test suite named "Initial Entries" */
-
-        /* TODO: Write a test that ensures when the loadFeed
+    /* Entries test suite */
+    describe('Initial Entries', function() {
+        /* A test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+        beforeEach( function(done) {
+            loadFeed(0, done);
+         });
+
+         it('contain at least one entry', function(done) {
+             const entries = document.querySelectorAll('[data-select=entries]')
+             expect(entries.length).toBeGreaterThan(0);
+             done();
+         })
+
+    });
+
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 

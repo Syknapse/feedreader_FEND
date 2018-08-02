@@ -96,7 +96,8 @@ $(function() {
          });
 
          it('contain at least one entry', function(done) {
-             const entries = document.querySelectorAll('[data-select=entries]')
+             const feed = document.querySelector('[data-select=feed]')
+             const entries = feed.querySelectorAll('[data-select=entries]')
              expect(entries.length).toBeGreaterThan(0);
              done();
          })
